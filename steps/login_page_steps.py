@@ -11,7 +11,7 @@ class LoginPageSteps:
         name = "welcome@artmedia.ge"
         password = "123456"
         login_page = LoginPage()
-        time.sleep(2)
+        login_page.is_visible()
         login_page.fill_username(name)
         login_page.fill_password(password)
         login_page.click_login_button()

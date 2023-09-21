@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from elements.button import Button
 from elements.input import Input
 from pages.base_form import BaseForm
+from utils.DriverUtils import DriverUtils
 
 
 class AddRecommendationPage(BaseForm):
@@ -30,11 +31,15 @@ class AddRecommendationPage(BaseForm):
     __fill_another_activiti = Input(By.XPATH, "//*[@id='root']/div/div[2]/div[2]/div[2]/div/div[1]/form/div[3]/div[2]/div[2]/input", "damatebuli aqtivoba")
     __send_pdf = Button(By.XPATH, "//h3[contains(text(),'ფაილის ატვირთვა')]", "pedefis damateba")
     __recommendation_add_button = Button(By.XPATH, "//button[@class='_AppButton_16gsi_1 _AppButton--FullWidth_16gsi_55']", "damatebis gilaki")
+    __recomendation_menu = Button(By.XPATH, "//span[contains(text(),'რეკომენდაციები')]", "rekomendaciebis meniu")
+    __all_rec = Button(By.XPATH,"//a[contains(text(),'ყველა')]", "yvela rekomendacia")
 
     def __init__(self):
         super().__init__(By.XPATH, "//h1[contains(text(),'დამატება')]", "title")
 
     def fill_rec_txt(self, value):
+        locator = self.__rec_txt.by, self.__rec_txt.locator
+        DriverUtils.wait_for_visible(locator)
         self.__rec_txt.send_text(value)
 
     def select_type(self):
@@ -101,5 +106,12 @@ class AddRecommendationPage(BaseForm):
 
     def click_add_button(self):
         self.__recommendation_add_button.click()
+
+    def click_rec_menu(self):
+        self.__recomendation_menu.click()
+
+
+    def click_rec_all(self):
+        self.__all_rec.click()
 
 
