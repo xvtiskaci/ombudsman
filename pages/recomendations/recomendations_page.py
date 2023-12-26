@@ -10,7 +10,7 @@ class RecommendationsPage(BaseForm):
 
     __add_recommendation_button = Button(By.XPATH, "//button[@class='_AppButton_16gsi_1 _AppButton--Green_16gsi_82']", "recommendation button")
     __rec_pages = Button(By.XPATH, "(//li[@class='_AppPagination__ListItem--Page_15ves_15'])", "peijebis raodenoba")
-    __added_rec_list = Button(By.XPATH, "(//a[@class='_AppRecommendationListing__List__Item_10xcr_47'])", "damatebuli rekomendaciebi gverdze")
+    __added_rec_list = Button(By.XPATH, "//div[@class='_AppRecommendationListing_9cl1q_1']//a", "damatebuli rekomendaciebi gverdze")
 
     def __init__(self):
         super().__init__(By.XPATH, "//h1[contains(text(),'ყველა რეკომენდაცია')]", "title")

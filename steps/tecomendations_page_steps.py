@@ -10,15 +10,15 @@ class RecommendationsPageSteps:
         recommendation_page.add_recommendation()
     @staticmethod
     def is_recommendation_added():
-        recommendations_page = RecommendationsPage()
-        assert recommendations_page.is_visible()
+        recommendations_page_pager = RecommendationsPage()
         add_rec_page = AddRecommendationPage()
         assert add_rec_page.is_visible()
         add_rec_page.click_rec_menu()
         add_rec_page.click_rec_all()
-        page_list = recommendations_page.get_rec_pages()
+        assert recommendations_page_pager.is_visible()
+        page_list = recommendations_page_pager.get_rec_pages()
         last_page = page_list[len(page_list) - 1]
         last_page.click()
-        added_rec_list = recommendations_page.get_added_rec()
+        added_rec_list = recommendations_page_pager.get_added_rec()
         last_rec = added_rec_list[len(added_rec_list) - 1]
         last_rec.click()
