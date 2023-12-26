@@ -59,7 +59,7 @@ class Element:
 
     def move_to_element(self):
         LoggerUtils.info("move to element: {}".format(self.name))
-        ActionChains(DriverManager.get_driver()).move_to_element(self.find_element())
+        ActionChains(DriverManager.get_driver()).move_to_element(self.find_element()).perform()
 
 
 
